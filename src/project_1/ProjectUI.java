@@ -35,18 +35,17 @@ public class ProjectUI {
    //field
    ProjectEvent pro_event;
    
-   JFrame f, tableInfoFrame, reserveFrame, infoFrame, menu, jf;
+   JFrame loginFrame, tableInfoFrame, reserveFrame, infoFrame, menuFrame, payFrame;
    JPanel intro_panel, tableInfoPanel, reservePanel, res_tf_panel, infoPanel, 
    menu_panel, save_panel, order_panel, content_panel, plate_panel, pizza_panel, 
    pilaff_panel, pasta_panel, salad_panel, drink_panel,
-   content_panel2, content_panel3, menu2_panel, price_panel, btn_panel;
+   menu_panel2, payment_panel, payment_panel2, price_panel, btn_panel;
    JLabel content_label;
    JTextField tf_id;
    JPasswordField tf_pass;
    JButton btn_seat_1, btn_seat_2, btn_seat_3, btn_seat_4, btn_seat_5, btn_seat_6, 
-   btn_seat_7, btn_seat_8, btn_seat_9, btn_sales, btn_result, btn1, btn2, btn3, btn4,
-   btn_save, btn_order,
-   btn_cash, btn_card;
+   btn_seat_7, btn_seat_8, btn_seat_9, btn_sales, btn_result, btn_menuOrder, btn_payment, btn_reserve, btn_info,
+   btn_save, btn_order, btn_cash, btn_card;
    
    String[] menu_test = {"크림파스타" ,"에이드"};
    int[] price_test = {21000 , 7000};
@@ -72,7 +71,7 @@ public class ProjectUI {
       //로그인창
       pro_event = new ProjectEvent(this);
       
-      f = new JFrame("관리자 로그인");
+      loginFrame = new JFrame("관리자 로그인");
       intro_panel = new JPanel();
       intro_panel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
 
@@ -100,12 +99,12 @@ public class ProjectUI {
       intro_panel.add(BorderLayout.SOUTH, login_panel);
       intro_panel.add(BorderLayout.WEST, btn_login);
       
-      f.add(intro_panel);
-      f.setSize(450,360);
-      f.setLocationRelativeTo(null);
-      f.setVisible(true);
+      loginFrame.add(intro_panel);
+      loginFrame.setSize(450,360);
+      loginFrame.setLocationRelativeTo(null);
+      loginFrame.setVisible(true);
       
-      f.addWindowListener(pro_event);
+      loginFrame.addWindowListener(pro_event);
       btn_login.addActionListener(pro_event);
       tf_pass.addActionListener(pro_event);
    }
@@ -127,7 +126,7 @@ public class ProjectUI {
       //테이블 선택 메인폼
       pro_event = new ProjectEvent(this);
       
-      f = new JFrame("음식주문시스템");
+      loginFrame = new JFrame("음식주문시스템");
       
       intro_panel = new JPanel(new BorderLayout(30,30));
       intro_panel.setBackground(Color.white);
@@ -135,7 +134,7 @@ public class ProjectUI {
       
       ImageIcon img = new ImageIcon("images/recipe9_main.png");
       JLabel logo = new JLabel(img);
-      JPanel menu_panel = new JPanel(new GridLayout(2,1,30,30));
+      JPanel menu_panel2 = new JPanel(new GridLayout(2,1,30,30));
       JPanel seat_panel = new JPanel(new GridLayout(3,3,30,30));
       
       btn_seat_1 = new JButton("1번");
@@ -155,18 +154,18 @@ public class ProjectUI {
       seat_panel.add(btn_seat_5); seat_panel.add(btn_seat_6);
       seat_panel.add(btn_seat_7); seat_panel.add(btn_seat_8);
       seat_panel.add(btn_seat_9);
-      menu_panel.add(btn_sales); menu_panel.add(btn_result);
+      menu_panel2.add(btn_sales); menu_panel2.add(btn_result);
       
       intro_panel.add(BorderLayout.NORTH, logo);
       intro_panel.add(BorderLayout.CENTER, seat_panel);
-      intro_panel.add(BorderLayout.EAST, menu_panel);
+      intro_panel.add(BorderLayout.EAST, menu_panel2);
       
-      f.add(intro_panel);
-      f.setSize(700,500);
-      f.setLocationRelativeTo(null);
-      f.setVisible(true);
+      loginFrame.add(intro_panel);
+      loginFrame.setSize(700,500);
+      loginFrame.setLocationRelativeTo(null);
+      loginFrame.setVisible(true);
       
-      f.addWindowListener(pro_event);
+      loginFrame.addWindowListener(pro_event);
       btn_seat_1.addActionListener(pro_event);
       btn_seat_2.addActionListener(pro_event);
       btn_seat_3.addActionListener(pro_event);
@@ -187,33 +186,37 @@ public class ProjectUI {
       tableInfoFrame = new JFrame("테이블 정보");
       tableInfoPanel= new JPanel(new GridLayout(1,4));
             
-      btn1 = new JButton("주  문");
-      btn2 = new JButton("계  산");
-      btn3 = new JButton("예  약");
-      btn4 = new JButton("정  보");
+      btn_menuOrder = new JButton("주  문");
+      btn_payment = new JButton("계  산");
+      btn_reserve = new JButton("예  약");
+      btn_info = new JButton("정  보");
 
-      tableInfoPanel.add(btn1);
-      tableInfoPanel.add(btn2);
-      tableInfoPanel.add(btn3);
-      tableInfoPanel.add(btn4);
+      tableInfoPanel.add(btn_menuOrder);
+      tableInfoPanel.add(btn_payment);
+      tableInfoPanel.add(btn_reserve);
+      tableInfoPanel.add(btn_info);
 
       tableInfoFrame.add(tableInfoPanel);
       tableInfoFrame.setSize(300,100);
-      tableInfoFrame.setLocationRelativeTo(null);
       tableInfoFrame.setVisible(true);
       
-      tableInfoFrame.addWindowListener(pro_event);
-      btn1.addActionListener(pro_event);
-      btn2.addActionListener(pro_event);
-      btn3.addActionListener(pro_event);
-      btn4.addActionListener(pro_event);
+      tableInfoFrame.addWindowListener(new WindowAdapter(){
+          public void windowClosing(WindowEvent e) {
+            tableInfoFrame.setVisible(false);
+            tableInfoFrame.dispose();
+          }
+       });      
+      btn_menuOrder.addActionListener(pro_event);
+      btn_payment.addActionListener(pro_event);
+      btn_reserve.addActionListener(pro_event);
+      btn_info.addActionListener(pro_event);
    }
    
    /**
     * 주문
     */
       public void order() {         
-         menu = new JFrame("MENU");
+         menuFrame = new JFrame("MENU");
       menu_panel = new JPanel(new GridLayout(7,1));
       content_panel = new JPanel(new BorderLayout());
       order_panel = new JPanel();
@@ -239,19 +242,19 @@ public class ProjectUI {
       order_panel.add(btn_order);
       menu_panel.add(order_panel);
       
-      menu.add(BorderLayout.WEST, menu_panel);
-      menu.add(BorderLayout.CENTER, content_panel);
+      menuFrame.add(BorderLayout.WEST, menu_panel);
+      menuFrame.add(BorderLayout.CENTER, content_panel);
       
-      menu.setSize(600,550);
-      menu.setLocationRelativeTo(null);
-      menu.setVisible(true);
+      menuFrame.setSize(600,550);
+      menuFrame.setLocationRelativeTo(null);
+      menuFrame.setVisible(true);
       
       btn_order.addActionListener(pro_event);
 
-      menu.addWindowListener(new WindowAdapter(){
+      menuFrame.addWindowListener(new WindowAdapter(){
           public void windowClosing(WindowEvent e) {
-            menu.setVisible(false);
-            menu.dispose();
+            menuFrame.setVisible(false);
+            menuFrame.dispose();
           }
        });      
          
@@ -336,7 +339,7 @@ public class ProjectUI {
 
          content_panel.add(plate_panel);
          content_panel.add(BorderLayout.SOUTH, save_panel);
-         menu.setVisible(true);
+         menuFrame.setVisible(true);
       }
       
       //피자 메뉴
@@ -388,7 +391,7 @@ public class ProjectUI {
          
          content_panel.add(pizza_panel);
          content_panel.add(BorderLayout.SOUTH, save_panel);
-         menu.setVisible(true);
+         menuFrame.setVisible(true);
       }
       
       //필라프 메뉴
@@ -440,7 +443,7 @@ public class ProjectUI {
          
          content_panel.add(pilaff_panel);
          content_panel.add(BorderLayout.SOUTH, save_panel);
-         menu.setVisible(true);
+         menuFrame.setVisible(true);
       }
 
       //파스타 메뉴
@@ -499,7 +502,7 @@ public class ProjectUI {
          
          content_panel.add(pasta_panel);
          content_panel.add(BorderLayout.SOUTH, save_panel);
-         menu.setVisible(true);
+         menuFrame.setVisible(true);
       }
       
       //샐러드 메뉴
@@ -545,7 +548,7 @@ public class ProjectUI {
          
          content_panel.add(salad_panel);
          content_panel.add(BorderLayout.SOUTH, save_panel);
-         menu.setVisible(true);
+         menuFrame.setVisible(true);
       }
       
       //음료 메뉴
@@ -590,16 +593,16 @@ public class ProjectUI {
          
          content_panel.add(drink_panel);
          content_panel.add(BorderLayout.SOUTH, save_panel);
-         menu.setVisible(true);
+         menuFrame.setVisible(true);
       }
       
       /**
     * 계산
     */
       public void payment() {
-         jf = new JFrame("결제창");
-         content_panel2 = new JPanel();
-         content_panel3 = new JPanel(new GridLayout(10,1));
+    	 payFrame = new JFrame("결제창");
+         payment_panel = new JPanel();
+         payment_panel2 = new JPanel(new GridLayout(10,1));
          menu_panel = new JPanel();
          price_panel = new JPanel();
          btn_panel = new JPanel();
@@ -609,7 +612,7 @@ public class ProjectUI {
 //         card.setBackground(new Color(255,255,255));
          
          content_label = new JLabel("<주 문 내 역>");
-         content_panel2.add(content_label);
+         payment_panel.add(content_label);
          
          for(int i=0; i<menu_test.length; i++) {
             JPanel jp = new JPanel(new GridLayout(1,3));
@@ -617,7 +620,7 @@ public class ProjectUI {
             JLabel label2 = new JLabel(menu_test[i]);
             JLabel label3 = new JLabel(price_test[i]+"");
             jp.add(label1); jp.add(label2);  jp.add(label3);
-            content_panel3.add(jp);
+            payment_panel2.add(jp);
          }
       
       
@@ -626,15 +629,20 @@ public class ProjectUI {
          btn_cash.setPreferredSize(new Dimension(80,80));
          btn_card.setPreferredSize(new Dimension(80,80));
          
-         jf.add(content_panel2, BorderLayout.NORTH);
-         jf.add(content_panel3, BorderLayout.CENTER);
-         jf.add(btn_panel, BorderLayout.SOUTH);
+         payFrame.add(payment_panel, BorderLayout.NORTH);
+         payFrame.add(payment_panel2, BorderLayout.CENTER);
+         payFrame.add(btn_panel, BorderLayout.SOUTH);
          
-         jf.setSize(300,500);
-         jf.setLocationRelativeTo(null);
-         jf.setVisible(true);
+         payFrame.setSize(300,500);
+         payFrame.setLocationRelativeTo(null);
+         payFrame.setVisible(true);
          
-         jf.addWindowListener(pro_event);
+         payFrame.addWindowListener(new WindowAdapter(){
+             public void windowClosing(WindowEvent e) {
+            	 payFrame.setVisible(false);
+            	 payFrame.dispose();
+             }
+          });      
          btn_cash.addActionListener(pro_event);
          btn_card.addActionListener(pro_event);
       }

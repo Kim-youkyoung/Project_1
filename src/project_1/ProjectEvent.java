@@ -37,13 +37,13 @@ public class ProjectEvent extends WindowAdapter implements ActionListener{
             (JButton)obj == ui.btn_seat_4 || (JButton)obj == ui.btn_seat_5 || (JButton)obj == ui.btn_seat_6 ||
             (JButton)obj == ui.btn_seat_7 || (JButton)obj == ui.btn_seat_8 || (JButton)obj == ui.btn_seat_9) {
          ui.choiceForm();
-      } else if((JButton)obj == ui.btn1) {      
+      } else if((JButton)obj == ui.btn_menuOrder) {      
          ui.order();
-      } else if((JButton)obj == ui.btn2) {   
+      } else if((JButton)obj == ui.btn_payment) {   
          ui.payment();
-      } else if((JButton)obj == ui.btn3) {
+      } else if((JButton)obj == ui.btn_reserve) {
          ui.reserve();
-      } else if((JButton)obj == ui.btn4) {
+      } else if((JButton)obj == ui.btn_info) {
          ui.info1();
       } else if(name.equals("플레이트")) {
          ui.plate();
@@ -58,8 +58,8 @@ public class ProjectEvent extends WindowAdapter implements ActionListener{
       } else if(name.equals("음료")) {
          ui.drink();
       } else if(name.equals("주문하기")) {
-         ui.menu.setVisible(false);
-         ui.menu.dispose();     
+         ui.menuFrame.setVisible(false);
+         ui.menuFrame.dispose();     
     	  
       }else if(obj == ui.btn_cash) {
          int result = JOptionPane.showConfirmDialog(null, sum+"원 현금결제 하시겠습니까?", "결제확인", JOptionPane.YES_NO_OPTION);
