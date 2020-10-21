@@ -36,16 +36,14 @@ public class ProjectUI {
    ProjectEvent pro_event;
    
    JFrame loginFrame, tableInfoFrame, reserveFrame, infoFrame, menuFrame, payFrame;
-   JPanel intro_panel, tableInfoPanel, reservePanel, res_tf_panel, infoPanel, 
-   menu_panel, save_panel, order_panel, content_panel, plate_panel, pizza_panel, 
-   pilaff_panel, pasta_panel, salad_panel, drink_panel,
-   menu_panel2, payment_panel, payment_panel2, price_panel, btn_panel;
+   JPanel intro_panel, tableInfoPanel, reservePanel, res_tf_panel, infoPanel, menu_panel, save_panel, order_panel, content_panel,
+   		  plate_panel, pizza_panel, pilaff_panel, pasta_panel, salad_panel, drink_panel,
+   		  menu_panel2, payment_panel, payment_panel2, price_panel, btn_panel;
    JLabel content_label;
    JTextField tf_id;
    JPasswordField tf_pass;
-   JButton btn_seat_1, btn_seat_2, btn_seat_3, btn_seat_4, btn_seat_5, btn_seat_6, 
-   btn_seat_7, btn_seat_8, btn_seat_9, btn_sales, btn_result, btn_menuOrder, btn_payment, btn_reserve, btn_info,
-   btn_save, btn_order, btn_cash, btn_card;
+   JButton btn_seat_1, btn_seat_2, btn_seat_3, btn_seat_4, btn_seat_5, btn_seat_6, btn_seat_7, btn_seat_8, btn_seat_9,
+   		   btn_sales, btn_result, btn_menuOrder, btn_payment, btn_reserve, btn_info, btn_save, btn_order, btn_cash, btn_card;
    
    String[] menu_test = {"크림파스타" ,"에이드"};
    int[] price_test = {21000 , 7000};
@@ -154,7 +152,9 @@ public class ProjectUI {
       seat_panel.add(btn_seat_5); seat_panel.add(btn_seat_6);
       seat_panel.add(btn_seat_7); seat_panel.add(btn_seat_8);
       seat_panel.add(btn_seat_9);
+      seat_panel.setBackground(Color.WHITE);
       menu_panel2.add(btn_sales); menu_panel2.add(btn_result);
+      menu_panel2.setBackground(Color.WHITE);
       
       intro_panel.add(BorderLayout.NORTH, logo);
       intro_panel.add(BorderLayout.CENTER, seat_panel);
@@ -216,7 +216,7 @@ public class ProjectUI {
     * 주문
     */
       public void order() {         
-         menuFrame = new JFrame("MENU");
+      menuFrame = new JFrame("MENU");
       menu_panel = new JPanel(new GridLayout(7,1));
       content_panel = new JPanel(new BorderLayout());
       order_panel = new JPanel();
@@ -336,7 +336,6 @@ public class ProjectUI {
          plate_panel.add(menu3);
          plate_panel.add(menu4);
          plate_panel.add(menu5);
-
          content_panel.add(plate_panel);
          content_panel.add(BorderLayout.SOUTH, save_panel);
          menuFrame.setVisible(true);
@@ -382,13 +381,13 @@ public class ProjectUI {
          menu3.add(BorderLayout.CENTER, logo3);
          menu4.add(BorderLayout.CENTER, logo4);
          menu5.add(BorderLayout.CENTER, logo5);
-         
+   
          pizza_panel.add(menu1);
          pizza_panel.add(menu2);
          pizza_panel.add(menu3);
          pizza_panel.add(menu4);
          pizza_panel.add(menu5);
-         
+     
          content_panel.add(pizza_panel);
          content_panel.add(BorderLayout.SOUTH, save_panel);
          menuFrame.setVisible(true);
@@ -723,15 +722,14 @@ public class ProjectUI {
          label_panel.add(panel);
       }
       
-      
       reservePanel.add(BorderLayout.WEST,label_panel);
       reservePanel.add(BorderLayout.CENTER,tf_panel);
       reservePanel.add(BorderLayout.SOUTH,btn_panel);
       reserveFrame.add(reservePanel);
       
-      reserveFrame.setLocationRelativeTo(null);
       reserveFrame.setSize(370,230);
       reserveFrame.setVisible(true);
+      reserveFrame.setLocationRelativeTo(null);
       
       btn_reserve.addActionListener(pro_event);
       btn_cancel.addActionListener(pro_event);
