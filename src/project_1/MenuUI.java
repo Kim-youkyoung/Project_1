@@ -434,7 +434,7 @@ public class MenuUI extends WindowAdapter implements ActionListener {
 		}
 	}
 
-}//CLASS
+}//CLASS !!!!
 
 
 
