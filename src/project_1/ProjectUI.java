@@ -31,7 +31,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 public class ProjectUI {
-
    //field
    ProjectEvent pro_event;
    
@@ -122,8 +121,8 @@ public class ProjectUI {
        }  
    }
    public void mainForm() {
-	  loginFrame.setVisible(false);
       //테이블 선택 메인폼
+	  loginFrame.setVisible(false);
       pro_event = new ProjectEvent(this);
       
       loginFrame = new JFrame("음식주문시스템");
