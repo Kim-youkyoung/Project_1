@@ -34,7 +34,7 @@ public class ProjectUI {
    //field
    ProjectEvent pro_event;
    
-   JFrame loginFrame, tableInfoFrame, reserveFrame, infoFrame, menuFrame, payFrame;
+   JFrame loginFrame, tableInfoFrame, reserveFrame, infoFrame, menuFrame, cartFrame, payFrame;
    JPanel intro_panel, tableInfoPanel, reservePanel, res_tf_panel, infoPanel, menu_panel, save_panel, order_panel, content_panel,
    		  plate_panel, pizza_panel, pilaff_panel, pasta_panel, salad_panel, drink_panel,
    		  menu_panel2, payment_panel, payment_panel2, price_panel, btn_panel;
@@ -121,8 +121,6 @@ public class ProjectUI {
        }  
    }
    public void mainForm() {
-	  loginFrame.setVisible(false);
-	  
       //테이블 선택 메인폼
 	  loginFrame.setVisible(false);
       pro_event = new ProjectEvent(this);
@@ -220,7 +218,8 @@ public class ProjectUI {
     */
       public void order() {         
       menuFrame = new JFrame("MENU");
-      menu_panel = new JPanel(new GridLayout(7,1));
+      cartFrame = new JFrame();
+      menu_panel = new JPanel(new GridLayout(6,1));
       content_panel = new JPanel(new BorderLayout());
       order_panel = new JPanel();
       save_panel = new JPanel();
@@ -243,7 +242,7 @@ public class ProjectUI {
       
       save_panel.add(btn_save);
       order_panel.add(btn_order);
-      menu_panel.add(order_panel);
+      cartFrame.add(BorderLayout.SOUTH,order_panel);
       
       menuFrame.add(BorderLayout.WEST, menu_panel);
       menuFrame.add(BorderLayout.CENTER, content_panel);
@@ -251,6 +250,10 @@ public class ProjectUI {
       menuFrame.setSize(600,550);
       menuFrame.setLocationRelativeTo(null);
       menuFrame.setVisible(true);
+      
+      cartFrame.setSize(200,300);
+      cartFrame.setLocation(280,135);
+      cartFrame.setVisible(true);
       
       btn_order.addActionListener(pro_event);
 
@@ -263,7 +266,7 @@ public class ProjectUI {
          
  }
       
-      /** 패널 reset **/
+    /** 패널 reset **/
    public void resetMenuPanel() {
       plate_panel.setVisible(false);
       pizza_panel.setVisible(false);

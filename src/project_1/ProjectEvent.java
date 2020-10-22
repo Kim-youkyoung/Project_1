@@ -58,8 +58,7 @@ public class ProjectEvent extends WindowAdapter implements ActionListener{
       } else if(name.equals("음료")) {
          ui.drink();
       } else if(name.equals("주문하기")) {
-         ui.menuFrame.setVisible(false);
-         ui.menuFrame.dispose();     
+         
     	  
       }else if(obj == ui.btn_cash) {
          int result = JOptionPane.showConfirmDialog(null, sum+"원 현금결제 하시겠습니까?", "결제확인", JOptionPane.YES_NO_OPTION);
