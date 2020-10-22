@@ -31,7 +31,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 public class ProjectUI {
- /////////////////////////////
    //field
    ProjectEvent pro_event;
    
@@ -105,6 +104,7 @@ public class ProjectUI {
       btn_login.addActionListener(pro_event);
       tf_pass.addActionListener(pro_event);
    }
+   
    //method
    public void loginProc() {
       //로그인 로직
@@ -120,6 +120,8 @@ public class ProjectUI {
        }  
    }
    public void mainForm() {
+	  loginFrame.setVisible(false);
+	  
       //테이블 선택 메인폼
       pro_event = new ProjectEvent(this);
       
