@@ -115,12 +115,14 @@ public class ProjectUI {
        if(id.equals("test") && pass.equals("1234")) {
           JOptionPane.showMessageDialog(null, "로그인 성공");
           mainForm();
+
        } else {
           JOptionPane.showMessageDialog(null, "로그인 실패. 아이디나 비밀번호를 확인하세요");
           tf_id.requestFocus();
        }  
    }
    public void mainForm() {
+	  loginFrame.setVisible(false);
       //테이블 선택 메인폼
       pro_event = new ProjectEvent(this);
       
