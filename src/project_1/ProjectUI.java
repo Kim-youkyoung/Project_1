@@ -31,7 +31,6 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 public class ProjectUI {
- /////////////////////////////
    //field
    ProjectEvent pro_event;
    
