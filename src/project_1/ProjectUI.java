@@ -84,7 +84,6 @@ public class ProjectUI {
       tf_pass = new JPasswordField(9);
       JButton btn_login = new JButton("·Î±×ÀÎ");
       
-      
       id_panel.add(label_id);
       id_panel.add(tf_id);
       pass_panel.add(label_pass);
