@@ -34,7 +34,7 @@ public class ProjectUI {
    //field
    ProjectEvent pro_event;
    
-   JFrame loginFrame, tableInfoFrame, reserveFrame, infoFrame, menuFrame, payFrame;
+   JFrame loginFrame, tableInfoFrame, reserveFrame, infoFrame, menuFrame, payFrame, orderFrame;
    JPanel intro_panel, tableInfoPanel, reservePanel, res_tf_panel, infoPanel, menu_panel, save_panel, order_panel, content_panel,
    		  plate_panel, pizza_panel, pilaff_panel, pasta_panel, salad_panel, drink_panel,
    		  menu_panel2, payment_panel, payment_panel2, price_panel, btn_panel;
@@ -43,6 +43,7 @@ public class ProjectUI {
    JPasswordField tf_pass;
    JButton btn_seat_1, btn_seat_2, btn_seat_3, btn_seat_4, btn_seat_5, btn_seat_6, btn_seat_7, btn_seat_8, btn_seat_9,
    		   btn_sales, btn_result, btn_menuOrder, btn_payment, btn_reserve, btn_info, btn_save, btn_order, btn_cash, btn_card;
+   JCheckBox cb1,cb2,cb3,cb4,cb5,cb6,cb7,cb8,cb9,cb10,cb11,cb12,cb13,cb14,cb15,cb16,cb17,cb18,cb19,cb20,cb21,cb22,cb23,cb24,cb25,cb26,cb27,cb28;
    
    String[] menu_test = {"크림파스타" ,"에이드"};
    int[] price_test = {21000 , 7000};
@@ -121,11 +122,9 @@ public class ProjectUI {
        }  
    }
    public void mainForm() {
-	  loginFrame.setVisible(false);
-	  
       //테이블 선택 메인폼
 	  loginFrame.setVisible(false);
-      pro_event = new ProjectEvent(this);
+	  pro_event = new ProjectEvent(this);
       
       loginFrame = new JFrame("음식주문시스템");
       
@@ -218,9 +217,10 @@ public class ProjectUI {
    /**
     * 주문
     */
-      public void order() {         
+   public void order() {         
       menuFrame = new JFrame("MENU");
-      menu_panel = new JPanel(new GridLayout(7,1));
+      orderFrame = new JFrame("장바구니");
+      menu_panel = new JPanel(new GridLayout(6,1));
       content_panel = new JPanel(new BorderLayout());
       order_panel = new JPanel();
       save_panel = new JPanel();
@@ -243,8 +243,7 @@ public class ProjectUI {
       
       save_panel.add(btn_save);
       order_panel.add(btn_order);
-      menu_panel.add(order_panel);
-      
+      orderFrame.add(BorderLayout.SOUTH, order_panel);
       menuFrame.add(BorderLayout.WEST, menu_panel);
       menuFrame.add(BorderLayout.CENTER, content_panel);
       
@@ -252,17 +251,18 @@ public class ProjectUI {
       menuFrame.setLocationRelativeTo(null);
       menuFrame.setVisible(true);
       
-      btn_order.addActionListener(pro_event);
-
+      orderFrame.setSize(300,300);
+      orderFrame.setLocation(180, 135);
+      orderFrame.setVisible(true);
+      
       menuFrame.addWindowListener(new WindowAdapter(){
           public void windowClosing(WindowEvent e) {
             menuFrame.setVisible(false);
             menuFrame.dispose();
           }
        });      
-         
- }
-      
+   }
+
       /** 패널 reset **/
    public void resetMenuPanel() {
       plate_panel.setVisible(false);
@@ -298,11 +298,11 @@ public class ProjectUI {
          switchPanel(this.PLATE);
          plate_panel.removeAll();
 
-         JCheckBox cb1 = new JCheckBox("바베큐 샐러드 플레이트 21000원");
-         JCheckBox cb2 = new JCheckBox("닭다리 샐러드 플레이트 21000원");
-         JCheckBox cb3 = new JCheckBox("함박 스테이크 샐러드 플레이트 21000원");
-         JCheckBox cb4 = new JCheckBox("팬스테이크/부채살 21000원");
-         JCheckBox cb5 = new JCheckBox("떡볶이 플레이트 19000원");
+         cb1 = new JCheckBox("바베큐 샐러드 플레이트 21000원");
+         cb2 = new JCheckBox("닭다리 샐러드 플레이트 21000원");
+         cb3 = new JCheckBox("함박 스테이크 샐러드 플레이트 21000원");
+         cb4 = new JCheckBox("팬스테이크/부채살 21000원");
+         cb5 = new JCheckBox("떡볶이 플레이트 19000원");
          
          ImageIcon img1 = new ImageIcon("images/plate1.png");
          ImageIcon img2 = new ImageIcon("images/plate2.png");
@@ -349,11 +349,11 @@ public class ProjectUI {
          switchPanel(this.PIZZA);
          pizza_panel.removeAll();
          
-         JCheckBox cb1 = new JCheckBox("고르곤졸라 피자 14,000원");
-         JCheckBox cb2 = new JCheckBox("갈릭스위트 피자 14,000원");
-         JCheckBox cb3 = new JCheckBox("마르게리타 피자 14,000원");
-         JCheckBox cb4 = new JCheckBox("썬 베이컨 피자 14,000원");
-         JCheckBox cb5 = new JCheckBox("시금치 피자 14,000원");
+         cb6 = new JCheckBox("고르곤졸라 피자 14,000원");
+         cb7 = new JCheckBox("갈릭스위트 피자 14,000원");
+         cb8 = new JCheckBox("마르게리타 피자 14,000원");
+         cb9 = new JCheckBox("썬 베이컨 피자 14,000원");
+         cb10 = new JCheckBox("시금치 피자 14,000원");
          
          ImageIcon img1 = new ImageIcon("images/pizza1.png");
          ImageIcon img2 = new ImageIcon("images/pizza2.png");
@@ -373,11 +373,11 @@ public class ProjectUI {
          JPanel menu4 = new JPanel(new BorderLayout());
          JPanel menu5 = new JPanel(new BorderLayout());
 
-         menu1.add(BorderLayout.SOUTH, cb1);
-         menu2.add(BorderLayout.SOUTH, cb2);
-         menu3.add(BorderLayout.SOUTH, cb3);
-         menu4.add(BorderLayout.SOUTH, cb4);
-         menu5.add(BorderLayout.SOUTH, cb5);
+         menu1.add(BorderLayout.SOUTH, cb6);
+         menu2.add(BorderLayout.SOUTH, cb7);
+         menu3.add(BorderLayout.SOUTH, cb8);
+         menu4.add(BorderLayout.SOUTH, cb9);
+         menu5.add(BorderLayout.SOUTH, cb10);
          
          menu1.add(BorderLayout.CENTER, logo1);
          menu2.add(BorderLayout.CENTER, logo2);
@@ -401,11 +401,11 @@ public class ProjectUI {
          switchPanel(this.PILAFF);
          pilaff_panel.removeAll();
          
-         JCheckBox cb1 = new JCheckBox("새우 필라프 19,000원");
-         JCheckBox cb2 = new JCheckBox("김치 필라프 19,000원");
-         JCheckBox cb3 = new JCheckBox("목살 필라프 19,000원");
-         JCheckBox cb4 = new JCheckBox("불닭 필라프 19,000원");
-         JCheckBox cb5 = new JCheckBox("불고기 필라프 19,000원");
+         cb11 = new JCheckBox("새우 필라프 19,000원");
+         cb12 = new JCheckBox("김치 필라프 19,000원");
+         cb13 = new JCheckBox("목살 필라프 19,000원");
+         cb14 = new JCheckBox("불닭 필라프 19,000원");
+         cb15 = new JCheckBox("불고기 필라프 19,000원");
          
          ImageIcon img1 = new ImageIcon("images/pilaff1.png");
          ImageIcon img2 = new ImageIcon("images/pilaff2.png");
@@ -425,11 +425,11 @@ public class ProjectUI {
          JPanel menu4 = new JPanel(new BorderLayout());
          JPanel menu5 = new JPanel(new BorderLayout());
          
-         menu1.add(BorderLayout.SOUTH, cb1);
-         menu2.add(BorderLayout.SOUTH, cb2);
-         menu3.add(BorderLayout.SOUTH, cb3);
-         menu4.add(BorderLayout.SOUTH, cb4);
-         menu5.add(BorderLayout.SOUTH, cb5);
+         menu1.add(BorderLayout.SOUTH, cb11);
+         menu2.add(BorderLayout.SOUTH, cb12);
+         menu3.add(BorderLayout.SOUTH, cb13);
+         menu4.add(BorderLayout.SOUTH, cb14);
+         menu5.add(BorderLayout.SOUTH, cb15);
          
          menu1.add(BorderLayout.CENTER, logo1);
          menu2.add(BorderLayout.CENTER, logo2);
@@ -453,12 +453,12 @@ public class ProjectUI {
          switchPanel(this.PASTA);
          pasta_panel.removeAll();
          
-         JCheckBox cb1 = new JCheckBox("까르보나라 19,000원");
-         JCheckBox cb2 = new JCheckBox("봉골레 19,000원");
-         JCheckBox cb3 = new JCheckBox("해산물 크림스파게티 19,000원");
-         JCheckBox cb4 = new JCheckBox("해산물 토마토스파게티 19,000원");
-         JCheckBox cb5 = new JCheckBox("해산물 올리브오일스파게티 19,000원");
-         JCheckBox cb6 = new JCheckBox("루꼴라 해산물 스파게티 19,000원");
+         cb16 = new JCheckBox("까르보나라 19,000원");
+         cb17 = new JCheckBox("봉골레 19,000원");
+         cb18 = new JCheckBox("해산물 크림스파게티 19,000원");
+         cb19 = new JCheckBox("해산물 토마토스파게티 19,000원");
+         cb20 = new JCheckBox("해산물 올리브오일스파게티 19,000원");
+         cb21 = new JCheckBox("루꼴라 해산물 스파게티 19,000원");
          
          ImageIcon img1 = new ImageIcon("images/pasta1.png");
          ImageIcon img2 = new ImageIcon("images/pasta2.png");
@@ -481,12 +481,12 @@ public class ProjectUI {
          JPanel menu5 = new JPanel(new BorderLayout());
          JPanel menu6 = new JPanel(new BorderLayout());
          
-         menu1.add(BorderLayout.SOUTH, cb1);
-         menu2.add(BorderLayout.SOUTH, cb2);
-         menu3.add(BorderLayout.SOUTH, cb3);
-         menu4.add(BorderLayout.SOUTH, cb4);
-         menu5.add(BorderLayout.SOUTH, cb5);
-         menu6.add(BorderLayout.SOUTH, cb6);
+         menu1.add(BorderLayout.SOUTH, cb16);
+         menu2.add(BorderLayout.SOUTH, cb17);
+         menu3.add(BorderLayout.SOUTH, cb18);
+         menu4.add(BorderLayout.SOUTH, cb19);
+         menu5.add(BorderLayout.SOUTH, cb20);
+         menu6.add(BorderLayout.SOUTH, cb21);
          
          menu1.add(BorderLayout.CENTER, logo1);
          menu2.add(BorderLayout.CENTER, logo2);
@@ -512,9 +512,9 @@ public class ProjectUI {
          switchPanel(this.SALAD);
          salad_panel.removeAll();
          
-         JCheckBox cb1 = new JCheckBox("버팔로윙/웨지감자 샐러드 14,000원");
-         JCheckBox cb2 = new JCheckBox("연어 샐러드 19,000원");
-         JCheckBox cb3 = new JCheckBox("샐러드 스파게티 14,000원");
+         cb22 = new JCheckBox("버팔로윙/웨지감자 샐러드 14,000원");
+         cb23 = new JCheckBox("연어 샐러드 19,000원");
+         cb24 = new JCheckBox("샐러드 스파게티 14,000원");
          
          ImageIcon img1 = new ImageIcon("images/salad1.png");
          ImageIcon img2 = new ImageIcon("images/salad2.png");
@@ -532,9 +532,9 @@ public class ProjectUI {
          JPanel menu4 = new JPanel(new BorderLayout());
          JPanel menu5 = new JPanel(new BorderLayout());
          
-         menu1.add(BorderLayout.SOUTH, cb1);
-         menu2.add(BorderLayout.SOUTH, cb2);
-         menu3.add(BorderLayout.SOUTH, cb3);
+         menu1.add(BorderLayout.SOUTH, cb22);
+         menu2.add(BorderLayout.SOUTH, cb23);
+         menu3.add(BorderLayout.SOUTH, cb24);
          
          menu1.add(BorderLayout.CENTER, logo1);
          menu2.add(BorderLayout.CENTER, logo2);
@@ -558,10 +558,10 @@ public class ProjectUI {
          switchPanel(this.DRINK);
          drink_panel.removeAll();
          
-         JCheckBox cb1 = new JCheckBox("콜라 2,000원");
-         JCheckBox cb2 = new JCheckBox("사이다 2,000원");
-         JCheckBox cb3 = new JCheckBox("레몬에이드 5,000원");
-         JCheckBox cb4 = new JCheckBox("자몽에이드 5,000원");
+         cb25 = new JCheckBox("콜라 2,000원");
+         cb26 = new JCheckBox("사이다 2,000원");
+         cb27 = new JCheckBox("레몬에이드 5,000원");
+         cb28 = new JCheckBox("자몽에이드 5,000원");
          
          ImageIcon img1 = new ImageIcon("images/cola.png");
          ImageIcon img2 = new ImageIcon("images/cider.png");
@@ -578,10 +578,10 @@ public class ProjectUI {
          JPanel menu3 = new JPanel(new BorderLayout());
          JPanel menu4 = new JPanel(new BorderLayout());
          
-         menu1.add(BorderLayout.SOUTH, cb1);
-         menu2.add(BorderLayout.SOUTH, cb2);
-         menu3.add(BorderLayout.SOUTH, cb3);
-         menu4.add(BorderLayout.SOUTH, cb4);
+         menu1.add(BorderLayout.SOUTH, cb25);
+         menu2.add(BorderLayout.SOUTH, cb26);
+         menu3.add(BorderLayout.SOUTH, cb27);
+         menu4.add(BorderLayout.SOUTH, cb28);
          
          menu1.add(BorderLayout.CENTER, logo1);
          menu2.add(BorderLayout.CENTER, logo2);
