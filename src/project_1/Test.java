@@ -4,6 +4,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		ProjectUI pui = new ProjectUI();
+		System.out.println("hi");
 	}
 
 }
