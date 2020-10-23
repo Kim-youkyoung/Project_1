@@ -1,16 +1,19 @@
 package project_1;
 
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class ProjectEvent extends WindowAdapter implements ActionListener{
    //field
    ProjectUI ui;
+   int i = 1;
    //constructor
    public ProjectEvent(ProjectUI ui) {
       this.ui = ui;
@@ -57,7 +60,21 @@ public class ProjectEvent extends WindowAdapter implements ActionListener{
          ui.salad();
       } else if(name.equals("음료")) {
          ui.drink();
-      } else if(name.equals("주문하기")) {
+      }else if((JButton)obj == ui.btn_save1){
+    	  OrderCheck();
+      }else if((JButton)obj == ui.btn_save2){
+    	  System.out.println("dd");
+    	  OrderCheck2();
+      }else if((JButton)obj == ui.btn_save3){
+    	  OrderCheck();
+      }else if((JButton)obj == ui.btn_save4){
+    	  OrderCheck();
+      }else if((JButton)obj == ui.btn_save5){
+    	  OrderCheck();
+      }else if((JButton)obj == ui.btn_save6){
+    	  OrderCheck();
+      }
+      else if(name.equals("주문하기")) {
          
     	  
       }else if(obj == ui.btn_cash) {
@@ -89,8 +106,74 @@ public class ProjectEvent extends WindowAdapter implements ActionListener{
          else if(result == JOptionPane.YES_OPTION) {
             
          }else {
-            
+           
          }
       }
+   }
+   
+   public void OrderCheck() {
+	   if(ui.cb1.isSelected()) {
+		   ui.cart_panel.add(new JLabel(i+". "+ui.cb1.getText()));
+		   ui.orderFrame.setVisible(true);
+		   ui.cb1.setSelected(false);
+		   i++;
+	   }
+	   if(ui.cb2.isSelected()) {
+		   ui.cart_panel.add(new JLabel(i+". "+ui.cb2.getText()));
+		   ui.orderFrame.setVisible(true);
+		   ui.cb2.setSelected(false);
+		   i++;
+	   }
+	   if(ui.cb3.isSelected()) {
+		   ui.cart_panel.add(new JLabel(i+". "+ui.cb3.getText()));
+		   ui.orderFrame.setVisible(true);
+		   ui.cb3.setSelected(false);
+		   i++;
+	   }
+	   if(ui.cb4.isSelected()) {
+		   ui.cart_panel.add(new JLabel(i+". "+ui.cb4.getText()));
+		   ui.orderFrame.setVisible(true);
+		   ui.cb4.setSelected(false);
+		   i++;
+	   }
+	   if(ui.cb5.isSelected()) {
+		   ui.cart_panel.add(new JLabel(i+". "+ui.cb5.getText()));
+		   ui.orderFrame.setVisible(true);
+		   ui.cb5.setSelected(false);
+		   i++;
+	   }
+   }
+   
+   public void OrderCheck2() {
+	   if(ui.cb6.isSelected()) {
+		   ui.cart_panel.add(new JLabel(i+". "+ui.cb6.getText()));
+		   ui.orderFrame.setVisible(true);
+		   ui.cb6.setSelected(false);
+		   i++;
+	   }
+	   if(ui.cb7.isSelected()) {
+		   ui.cart_panel.add(new JLabel(i+". "+ui.cb7.getText()));
+		   ui.orderFrame.setVisible(true);
+		   ui.cb7.setSelected(false);
+		   i++;
+	   }
+	   if(ui.cb8.isSelected()) {
+		   ui.cart_panel.add(new JLabel(i+". "+ui.cb8.getText()));
+		   ui.orderFrame.setVisible(true);
+		   ui.cb8.setSelected(false);
+		   i++;
+	   }
+	   if(ui.cb9.isSelected()) {
+		   ui.cart_panel.add(new JLabel(i+". "+ui.cb9.getText()));
+		   ui.orderFrame.setVisible(true);
+		   ui.cb9.setSelected(false);
+		   i++;
+	   }
+	   if(ui.cb10.isSelected()) {
+		   ui.cart_panel.add(new JLabel(i+". "+ui.cb10.getText()));
+		   ui.orderFrame.setVisible(true);
+		   ui.cb10.setSelected(false);
+		   i++;
+	   }
    }
 }

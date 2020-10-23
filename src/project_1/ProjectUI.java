@@ -35,14 +35,14 @@ public class ProjectUI {
    ProjectEvent pro_event;
    
    JFrame loginFrame, tableInfoFrame, reserveFrame, infoFrame, menuFrame, payFrame, orderFrame;
-   JPanel intro_panel, tableInfoPanel, reservePanel, res_tf_panel, infoPanel, menu_panel, save_panel, order_panel, content_panel,
-   		  plate_panel, pizza_panel, pilaff_panel, pasta_panel, salad_panel, drink_panel,
-   		  menu_panel2, payment_panel, payment_panel2, price_panel, btn_panel;
+   JPanel intro_panel, tableInfoPanel, reservePanel, res_tf_panel, infoPanel, menu_panel, save1_panel,save2_panel,save3_panel,save4_panel,save5_panel, save6_panel,
+   		  order_panel, content_panel, plate_panel, pizza_panel, pilaff_panel, pasta_panel, salad_panel, drink_panel,
+   		  menu_panel2, payment_panel, payment_panel2, price_panel, btn_panel, cart_panel;
    JLabel content_label;
    JTextField tf_id;
    JPasswordField tf_pass;
    JButton btn_seat_1, btn_seat_2, btn_seat_3, btn_seat_4, btn_seat_5, btn_seat_6, btn_seat_7, btn_seat_8, btn_seat_9,
-   		   btn_sales, btn_result, btn_menuOrder, btn_payment, btn_reserve, btn_info, btn_save, btn_order, btn_cash, btn_card;
+   		   btn_sales, btn_result, btn_menuOrder, btn_payment, btn_reserve, btn_info, btn_save1, btn_save2, btn_save3, btn_save4, btn_save5, btn_save6,btn_order, btn_cash, btn_card;
    JCheckBox cb1,cb2,cb3,cb4,cb5,cb6,cb7,cb8,cb9,cb10,cb11,cb12,cb13,cb14,cb15,cb16,cb17,cb18,cb19,cb20,cb21,cb22,cb23,cb24,cb25,cb26,cb27,cb28;
    
    String[] menu_test = {"크림파스타" ,"에이드"};
@@ -223,7 +223,14 @@ public class ProjectUI {
       menu_panel = new JPanel(new GridLayout(6,1));
       content_panel = new JPanel(new BorderLayout());
       order_panel = new JPanel();
-      save_panel = new JPanel();
+      save1_panel = new JPanel();
+      save2_panel = new JPanel();
+      save3_panel = new JPanel();
+      save4_panel = new JPanel();
+      save5_panel = new JPanel();
+      save6_panel = new JPanel();
+      cart_panel = new JPanel(new GridLayout(6,1));
+
       plate_panel = new JPanel(new GridLayout(3,2));
       pizza_panel = new JPanel(new GridLayout(3,2));
       pilaff_panel = new JPanel(new GridLayout(3,2));
@@ -232,7 +239,12 @@ public class ProjectUI {
       drink_panel = new JPanel(new GridLayout(2,2));
 
       btn_order = new JButton("주문하기");
-      btn_save = new JButton("담기");
+      btn_save1 = new JButton("담기");
+      btn_save2 = new JButton("담기");
+      btn_save3 = new JButton("담기");
+      btn_save4 = new JButton("담기");
+      btn_save5 = new JButton("담기");
+      btn_save6 = new JButton("담기");
       
       //menu 버튼 생성
       for(String name : menu_names) {
@@ -241,11 +253,19 @@ public class ProjectUI {
          menu.addActionListener(pro_event);
       }
       
-      save_panel.add(btn_save);
+      save1_panel.add(btn_save1);
+      save2_panel.add(btn_save2);
+      save3_panel.add(btn_save3);
+      save4_panel.add(btn_save4);
+      save5_panel.add(btn_save5);
+      save6_panel.add(btn_save6);
       order_panel.add(btn_order);
+      
       orderFrame.add(BorderLayout.SOUTH, order_panel);
       menuFrame.add(BorderLayout.WEST, menu_panel);
       menuFrame.add(BorderLayout.CENTER, content_panel);
+      orderFrame.add(cart_panel);
+    
       
       menuFrame.setSize(600,550);
       menuFrame.setLocationRelativeTo(null);
@@ -255,10 +275,20 @@ public class ProjectUI {
       orderFrame.setLocation(180, 135);
       orderFrame.setVisible(true);
       
+      btn_order.addActionListener(pro_event);
+      btn_save1.addActionListener(pro_event);
+      btn_save2.addActionListener(pro_event);
+      btn_save3.addActionListener(pro_event);
+      btn_save4.addActionListener(pro_event);
+      btn_save5.addActionListener(pro_event);
+      btn_save6.addActionListener(pro_event);
+      
       menuFrame.addWindowListener(new WindowAdapter(){
           public void windowClosing(WindowEvent e) {
             menuFrame.setVisible(false);
+            orderFrame.setVisible(false);
             menuFrame.dispose();
+            orderFrame.dispose();
           }
        });      
    }
@@ -290,6 +320,7 @@ public class ProjectUI {
             salad_panel.setVisible(true);   break;
          case 6:
             drink_panel.setVisible(true);   break;
+            
       }
    }
    
@@ -297,6 +328,7 @@ public class ProjectUI {
       public void plate() {
          switchPanel(this.PLATE);
          plate_panel.removeAll();
+        
 
          cb1 = new JCheckBox("바베큐 샐러드 플레이트 21000원");
          cb2 = new JCheckBox("닭다리 샐러드 플레이트 21000원");
@@ -340,7 +372,7 @@ public class ProjectUI {
          plate_panel.add(menu4);
          plate_panel.add(menu5);
          content_panel.add(plate_panel);
-         content_panel.add(BorderLayout.SOUTH, save_panel);
+         content_panel.add(BorderLayout.SOUTH, save1_panel);
          menuFrame.setVisible(true);
       }
       
@@ -392,7 +424,7 @@ public class ProjectUI {
          pizza_panel.add(menu5);
      
          content_panel.add(pizza_panel);
-         content_panel.add(BorderLayout.SOUTH, save_panel);
+         content_panel.add(BorderLayout.SOUTH, save2_panel);
          menuFrame.setVisible(true);
       }
       
@@ -444,7 +476,7 @@ public class ProjectUI {
          pilaff_panel.add(menu5);
          
          content_panel.add(pilaff_panel);
-         content_panel.add(BorderLayout.SOUTH, save_panel);
+         content_panel.add(BorderLayout.SOUTH, save3_panel);
          menuFrame.setVisible(true);
       }
 
@@ -452,6 +484,7 @@ public class ProjectUI {
       public void pasta() {
          switchPanel(this.PASTA);
          pasta_panel.removeAll();
+        
          
          cb16 = new JCheckBox("까르보나라 19,000원");
          cb17 = new JCheckBox("봉골레 19,000원");
@@ -503,7 +536,7 @@ public class ProjectUI {
          pasta_panel.add(menu6);
          
          content_panel.add(pasta_panel);
-         content_panel.add(BorderLayout.SOUTH, save_panel);
+         content_panel.add(BorderLayout.SOUTH, save4_panel);
          menuFrame.setVisible(true);
       }
       
@@ -549,7 +582,7 @@ public class ProjectUI {
          salad_panel.add(menu5);
          
          content_panel.add(salad_panel);
-         content_panel.add(BorderLayout.SOUTH, save_panel);
+         content_panel.add(BorderLayout.SOUTH, save5_panel);
          menuFrame.setVisible(true);
       }
       
@@ -594,7 +627,7 @@ public class ProjectUI {
          drink_panel.add(menu4);
          
          content_panel.add(drink_panel);
-         content_panel.add(BorderLayout.SOUTH, save_panel);
+         content_panel.add(BorderLayout.SOUTH, save6_panel);
          menuFrame.setVisible(true);
       }
       
