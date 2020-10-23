@@ -866,8 +866,4 @@ public class ProjectUI {
             }
          });
       }
-      
-      /** 체크박스 이벤트 **/
-      JPanel select_panel = new JPanel();
-
 }
