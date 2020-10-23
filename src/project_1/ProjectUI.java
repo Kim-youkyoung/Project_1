@@ -221,7 +221,7 @@ public class ProjectUI {
       menuFrame = new JFrame("MENU");
       orderFrame = new JFrame("");
       menu_panel = new JPanel(new GridLayout(6,1));
-//      content_panel1 = new JPanel(new GridLayout(3,2));
+      
       order_panel = new JPanel();
       save_panel1 = new JPanel();
       save_panel2 = new JPanel();
